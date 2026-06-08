@@ -147,7 +147,7 @@ export default function CaseStudyPage() {
       {/* User Research Section */}
       <section className="py-48 md:py-80 px-6 md:px-12 lg:px-24 bg-zinc-50/50 dark:bg-white/[0.01]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-20">
             <div className="md:col-span-4">
               <Reveal>
                 <div className="text-[11px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8">
@@ -161,7 +161,7 @@ export default function CaseStudyPage() {
                 </p>
               </Reveal>
             </div>
-            <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-12">
+            <div className="md:col-span-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
               {[
                 {
                   name: "The PhD Artist",
@@ -176,11 +176,11 @@ export default function CaseStudyPage() {
                   context: "Aerospace Engineer"
                 }
               ].map((user, i) => (
-                <Reveal key={i} delay={0.15 * i} y={40}>
+                <Reveal key={i} delay={0.15 * i} y={40} className="w-full h-full">
                   <div className="group relative p-10 rounded-[3rem] bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 flex flex-col h-full">
-                    <div className="flex justify-between items-start mb-10">
-                      <div className="px-3 py-1 rounded-full bg-zinc-50 dark:bg-zinc-800 text-[9px] font-mono uppercase tracking-widest text-zinc-400 border border-zinc-100 dark:border-zinc-700">{user.focus}</div>
-                      <div className="text-[9px] font-mono uppercase text-zinc-300 dark:text-zinc-600 tracking-tighter">{user.context}</div>
+                    <div className="flex justify-between items-start gap-4 mb-10">
+                      <div className="px-2 py-0.5 rounded-full bg-zinc-50 dark:bg-zinc-800 text-[8px] font-mono uppercase tracking-widest text-zinc-400 border border-zinc-100 dark:border-zinc-700 shrink-0">{user.focus}</div>
+                      <div className="text-[9px] font-mono uppercase text-zinc-300 dark:text-zinc-600 tracking-tighter text-right">{user.context}</div>
                     </div>
                     <h3 className="text-2xl font-medium mb-6 group-hover:text-foreground transition-colors">{user.name}</h3>
                     <p className="text-zinc-500 text-sm leading-relaxed italic mt-auto border-l-2 border-zinc-100 dark:border-zinc-800 pl-8 group-hover:border-foreground transition-all duration-1000">
@@ -237,9 +237,9 @@ export default function CaseStudyPage() {
                       </div>
                     </div>
                     <div>
-                      <div className="flex items-center gap-6 mb-4">
+                      <div className="flex items-center gap-4 mb-4">
                         <h4 className="font-medium text-xl tracking-tight">{feedback.title}</h4>
-                        <span className="px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono uppercase text-zinc-500 tracking-widest">{feedback.tag}</span>
+                        <span className="px-1.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-[9px] font-mono uppercase text-zinc-500 tracking-widest shrink-0">{feedback.tag}</span>
                       </div>
                       <p className="text-zinc-500 text-sm leading-relaxed max-w-[50ch]">
                         {feedback.text}
