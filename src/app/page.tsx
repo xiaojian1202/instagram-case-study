@@ -73,14 +73,14 @@ export default function CaseStudyPage() {
       <section className="relative min-h-[100dvh] flex flex-col justify-end pt-24 pb-32 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
         <div className="z-10 max-w-5xl">
           <Reveal y={80}>
-            <h1 className="text-6xl md:text-8xl lg:text-[120px] font-medium tracking-[-0.04em] leading-[0.82] mb-12">
+            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[0.85] mb-12">
               Empowering Artists Through <br className="hidden md:block" />
               Centralized Audio Discovery
             </h1>
           </Reveal>
           <Reveal delay={0.15} y={30}>
-            <p className="text-xl md:text-3xl text-zinc-500 font-medium leading-tight max-w-[32ch] mb-20">
-              A seamless ecosystem transforming passive listening into active creator engagement.
+            <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-[45ch] mb-20">
+              A seamless ecosystem transforming passive listening into active creator engagement on a global platform.
             </p>
           </Reveal>
           
@@ -90,7 +90,7 @@ export default function CaseStudyPage() {
               className="flex flex-col items-start gap-5 group cursor-default"
             >
               <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-zinc-400 group-hover:text-foreground transition-all duration-700">
-                Scroll to Explore
+                Explore Case Study
               </span>
               <div className="relative w-12 h-12 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center overflow-hidden transition-all duration-700 group-hover:border-foreground group-hover:scale-110">
                 <motion.div
@@ -131,21 +131,18 @@ export default function CaseStudyPage() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
           <div className="md:col-span-11 lg:col-span-9">
             <Reveal>
-              <div className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 mb-12">
-                Contextual Narrative
-              </div>
-              <h2 className="text-4xl md:text-7xl font-medium tracking-[-0.03em] leading-[0.9] mb-16">
-                Redefining the Creator Lifecycle
+              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-12">
+                Overview
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="text-3xl md:text-5xl text-foreground font-medium leading-[1.1] mb-12 tracking-tight">
+              <p className="text-2xl md:text-3xl text-foreground font-medium leading-tight mb-8">
                 For independent artists, the digital stage has become a treadmill of constant production.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-[55ch]">
-                The relentless necessity for “content creation” forces musicians to trade their well-being for fleeting engagement. My design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab, we allow the music to take center stage—giving artists a healthier path to professional growth.
+              <p className="text-lg md:text-xl text-zinc-500 leading-relaxed max-w-[65ch]">
+                The relentless necessity for “content creation” forces musicians to trade their well-being for fleeting engagement. Without professional resources, the obligation to produce endless short-form content subjects artists to unwelcome mental health pressures, often burying the music itself under the weight of the hustle. My design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab and bridging the gap between Reels and creator profiles, we allow the music to take center stage—giving artists a permanent home for their sonic brand and a healthier path to professional growth.
               </p>
             </Reveal>
           </div>
@@ -158,13 +155,13 @@ export default function CaseStudyPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-32">
             <div className="md:col-span-4">
               <Reveal>
-                <div className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 mb-12">
+                <div className="text-[11px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8">
                   Phase 01
                 </div>
-                <h2 className="text-4xl md:text-7xl font-medium tracking-[-0.03em] leading-[0.9] mb-12">
+                <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-8">
                   User Research
                 </h2>
-                <p className="text-xl text-zinc-500 leading-relaxed">
+                <p className="text-zinc-500 leading-relaxed">
                   To understand the music ecosystem on Instagram, interviews were conducted with two independent artists.
                 </p>
               </Reveal>
@@ -190,8 +187,8 @@ export default function CaseStudyPage() {
                       <div className="px-3 py-1 rounded-full bg-zinc-50 dark:bg-zinc-800 text-[9px] font-mono uppercase tracking-widest text-zinc-400 border border-zinc-100 dark:border-zinc-700">{user.focus}</div>
                       <div className="text-[9px] font-mono uppercase text-zinc-300 dark:text-zinc-600 tracking-tighter">{user.context}</div>
                     </div>
-                    <h3 className="text-3xl font-medium mb-8 group-hover:text-foreground transition-colors">{user.name}</h3>
-                    <p className="text-zinc-500 text-lg leading-relaxed italic mt-auto border-l-2 border-zinc-100 dark:border-zinc-800 pl-8 group-hover:border-foreground transition-all duration-1000">
+                    <h3 className="text-2xl font-medium mb-6 group-hover:text-foreground transition-colors">{user.name}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed italic mt-auto border-l-2 border-zinc-100 dark:border-zinc-800 pl-8 group-hover:border-foreground transition-all duration-1000">
                       &quot;{user.insight}&quot;
                     </p>
                   </div>
@@ -207,13 +204,13 @@ export default function CaseStudyPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           <div className="lg:col-span-5">
             <Reveal>
-              <div className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 mb-12">
+              <div className="text-[11px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8">
                 Validation
               </div>
-              <h2 className="text-4xl md:text-8xl font-medium tracking-[-0.03em] leading-[0.85] mb-12">
+              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-8">
                 User Feedback
               </h2>
-              <p className="text-2xl text-zinc-500 leading-relaxed mb-16 font-medium">
+              <p className="text-lg text-zinc-500 leading-relaxed mb-12">
                 After seeing the prototype design, users highlighted how the centralized music hub directly addressed their primary pain points.
               </p>
             </Reveal>
@@ -240,16 +237,16 @@ export default function CaseStudyPage() {
                 <Reveal key={i} delay={0.2 + (i * 0.15)} y={30}>
                   <div className="group flex flex-col sm:flex-row gap-10 p-12 rounded-[3rem] bg-zinc-50/50 dark:bg-white/[0.02] border border-zinc-100 dark:border-white/10 hover:bg-zinc-100 dark:hover:bg-white/[0.04] transition-all duration-700 ease-vanguard shadow-sm hover:shadow-xl">
                     <div className="shrink-0">
-                      <div className="w-16 h-16 rounded-[1.25rem] bg-white dark:bg-zinc-800 flex items-center justify-center font-mono text-sm text-zinc-400 group-hover:bg-foreground group-hover:text-background transition-all duration-1000 ease-vanguard shadow-sm">
+                      <div className="w-14 h-14 rounded-2xl bg-white dark:bg-zinc-800 flex items-center justify-center font-mono text-xs text-zinc-400 group-hover:bg-foreground group-hover:text-background transition-all duration-1000 ease-vanguard shadow-sm">
                         0{i + 1}
                       </div>
                     </div>
                     <div>
                       <div className="flex items-center gap-6 mb-4">
-                        <h4 className="font-medium text-2xl tracking-tight">{feedback.title}</h4>
-                        <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono uppercase text-zinc-500 tracking-[0.2em]">{feedback.tag}</span>
+                        <h4 className="font-medium text-xl tracking-tight">{feedback.title}</h4>
+                        <span className="px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono uppercase text-zinc-500 tracking-widest">{feedback.tag}</span>
                       </div>
-                      <p className="text-zinc-500 text-lg leading-relaxed max-w-[50ch]">
+                      <p className="text-zinc-500 text-sm leading-relaxed max-w-[50ch]">
                         {feedback.text}
                       </p>
                     </div>
@@ -266,14 +263,14 @@ export default function CaseStudyPage() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <div className="order-2 lg:order-1">
             <Reveal>
-              <div className="text-[11px] font-mono uppercase tracking-[0.5em] text-zinc-400 mb-10">
+              <div className="text-[11px] font-mono uppercase tracking-[0.4em] text-zinc-400 mb-10">
                 Feature 01
               </div>
-              <h2 className="text-4xl md:text-8xl font-medium tracking-[-0.03em] leading-[0.85] mb-12">
+              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-12">
                 The Dedicated Music Tab
               </h2>
-              <p className="text-2xl text-zinc-500 leading-relaxed mb-20 max-w-[45ch] font-medium">
-                A new home for audio creators. The Music Tab consolidates all original audio, licensed tracks, and saved sounds into a single interface.
+              <p className="text-lg text-zinc-500 leading-relaxed mb-20 max-w-[45ch]">
+                A new home for audio creators. The Music Tab consolidates all original audio, licensed tracks, and saved sounds into a single, intuitive interface directly on the profile page.
               </p>
               <div className="space-y-10">
                 {[
@@ -309,14 +306,14 @@ export default function CaseStudyPage() {
           </div>
           <div>
             <Reveal delay={0.2}>
-              <div className="text-[11px] font-mono uppercase tracking-[0.5em] text-zinc-400 mb-10">
+              <div className="text-[11px] font-mono uppercase tracking-[0.4em] text-zinc-400 mb-10">
                 Feature 02
               </div>
-              <h2 className="text-4xl md:text-8xl font-medium tracking-[-0.03em] leading-[0.85] mb-12">
+              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-12">
                 Seamless Reels Integration
               </h2>
-              <p className="text-2xl text-zinc-500 leading-relaxed max-w-[45ch] font-medium">
-                Closing the loop between consumption and discovery. Reels now feature direct links that transport users straight to the creator&apos;s music profile.
+              <p className="text-lg text-zinc-500 leading-relaxed max-w-[45ch]">
+                Closing the loop between consumption and discovery. Reels now feature direct links that transport users straight to the creator&apos;s music profile, fostering deeper connections and simplifying audio sourcing.
               </p>
             </Reveal>
           </div>
