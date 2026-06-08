@@ -70,7 +70,7 @@ export default function CaseStudyPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex flex-col justify-end pt-24 pb-32 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+      <section className="relative min-h-[100dvh] flex flex-col justify-end pt-24 pb-32 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto overflow-x-clip">
         <div className="z-10 max-w-5xl">
           <Reveal y={80}>
             <h1 className="text-6xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[0.85] mb-20">
@@ -105,7 +105,7 @@ export default function CaseStudyPage() {
           initial={{ opacity: 0, scale: 1.1, x: 100, rotate: 5 }}
           animate={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
           transition={{ duration: 2.5, ease: [0.32, 0.72, 0, 1] }}
-          className="absolute top-1/2 right-[-5%] -translate-y-1/2 w-full md:w-[70%] h-[60vh] md:h-[90vh] -z-0 opacity-10 md:opacity-100 pointer-events-none"
+          className="absolute top-1/2 right-0 -translate-y-1/2 w-full md:w-[70%] h-[60vh] md:h-[90vh] -z-0 opacity-10 md:opacity-100 pointer-events-none"
         >
           <div className="relative w-full h-full">
             <Image
@@ -137,7 +137,7 @@ export default function CaseStudyPage() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-lg md:text-xl text-zinc-500 leading-relaxed max-w-[65ch]">
-                With Instagram, the necessity for “content creation” forces musicians to trade their professional growth in exchange for fan engagement. Without professional resources, the obligation to produce endless short-form content burden artists, putting the music itself. This design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab and bridging the gap between Reels and creator profiles, we allow the music aspects to be integrated into the Instagram experience.
+                With Instagram, the necessity for “content creation” forces musicians to trade their professional growth in exchange for fan engagement. Without professional resources, the obligation to produce endless short-form content burden artists, putting behind the music itself. This design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab and bridging the gap between Reels and creator profiles, we allow the music aspects to be integrated into the Instagram experience.
               </p>
             </Reveal>
           </div>
