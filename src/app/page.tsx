@@ -4,20 +4,48 @@ import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { ArrowDown, MusicNotes, PlayCircle, SpeakerHigh } from "@phosphor-icons/react";
 
-const Reveal = ({ children, delay = 0, className = "", y = 24 }: { children: React.ReactNode; delay?: number; className?: string; y?: number }) => (
+/**
+ * Reveal Component
+ * Elite Vanguard-tier entry animation with blur-interpolation and spring physics.
+ */
+const Reveal = ({ children, delay = 0, className = "", y = 40, blur = true }: { children: React.ReactNode; delay?: number; className?: string; y?: number; blur?: boolean }) => (
   <motion.div
-    initial={{ opacity: 0, y }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.1 }}
+    initial={{ opacity: 0, y, filter: blur ? "blur(10px)" : "none" }}
+    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+    viewport={{ once: true, amount: 0.15 }}
     transition={{
-      duration: 0.8,
+      duration: 1.2,
       delay,
-      ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for a "fluid" feel
+      ease: [0.32, 0.72, 0, 1],
     }}
     className={className}
   >
     {children}
   </motion.div>
+);
+
+/**
+ * DoubleBezelMockup
+ * Nested hardware architecture (Doppelrand) for premium device presentation.
+ */
+const DoubleBezelMockup = ({ src, alt, delay = 0 }: { src: string; alt: string; delay?: number }) => (
+  <Reveal delay={delay} y={60} blur={false} className="w-full max-w-[440px]">
+    <div className="relative p-2.5 rounded-[4rem] bg-zinc-100/50 dark:bg-white/5 ring-1 ring-black/5 dark:ring-white/10 shadow-2xl overflow-hidden group">
+      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      <div className="relative aspect-[9/19.5] rounded-[3.25rem] bg-black shadow-[inset_0_2px_4px_rgba(255,255,255,0.1)] border-[10px] border-zinc-900 dark:border-zinc-800 p-1.5 overflow-hidden transition-transform duration-1000 group-hover:scale-[1.02]">
+        <div className="relative w-full h-full rounded-[2.25rem] overflow-hidden bg-zinc-50 dark:bg-zinc-950">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 440px"
+            className="object-contain transition-transform duration-1000 group-hover:scale-105"
+            unoptimized
+          />
+        </div>
+      </div>
+    </div>
+  </Reveal>
 );
 
 export default function CaseStudyPage() {
@@ -26,56 +54,70 @@ export default function CaseStudyPage() {
   const arrowOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
   return (
-    <main className="bg-background text-foreground font-sans">
+    <main className="bg-background text-foreground font-sans selection:bg-foreground selection:text-background overflow-x-hidden">
+      {/* Cinematic Mesh Background Overlay */}
+      <div className="mesh-gradient">
+        <motion.div 
+          animate={{ x: [0, 100, 0], y: [0, 50, 0] }} 
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="mesh-orb w-[600px] h-[600px] top-[-20%] left-[-10%]" 
+        />
+        <motion.div 
+          animate={{ x: [0, -80, 0], y: [0, 100, 0] }} 
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="mesh-orb w-[500px] h-[500px] bottom-[-10%] right-[-5%]" 
+        />
+      </div>
+
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex flex-col justify-end pt-24 pb-20 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto overflow-hidden">
-        <div className="z-10 max-w-4xl">
-          <Reveal y={40}>
-            <h1 className="text-5xl md:text-7xl lg:text-[100px] font-medium tracking-tighter leading-[0.85] mb-10">
+      <section className="relative min-h-[100dvh] flex flex-col justify-end pt-24 pb-32 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+        <div className="z-10 max-w-5xl">
+          <Reveal y={80}>
+            <h1 className="text-6xl md:text-8xl lg:text-[120px] font-medium tracking-[-0.04em] leading-[0.82] mb-12">
               Empowering Artists Through <br className="hidden md:block" />
               Centralized Audio Discovery
             </h1>
           </Reveal>
-          <Reveal delay={0.1} y={20}>
-            <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-[45ch] mb-20">
-              A seamless ecosystem transforming passive listening into active creator engagement on a global platform.
+          <Reveal delay={0.15} y={30}>
+            <p className="text-xl md:text-3xl text-zinc-500 font-medium leading-tight max-w-[32ch] mb-20">
+              A seamless ecosystem transforming passive listening into active creator engagement.
             </p>
           </Reveal>
           
-          <Reveal delay={0.2} y={10}>
+          <Reveal delay={0.3} y={20}>
             <motion.div 
               style={{ y: arrowY, opacity: arrowOpacity }}
-              className="flex flex-col items-start gap-4 group cursor-default"
+              className="flex flex-col items-start gap-5 group cursor-default"
             >
-              <span className="text-xs font-mono uppercase tracking-[0.3em] text-zinc-400 group-hover:text-foreground transition-colors duration-500">
-                Explore Case Study
+              <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-zinc-400 group-hover:text-foreground transition-all duration-700">
+                Scroll to Explore
               </span>
-              <div className="relative w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:border-foreground">
+              <div className="relative w-12 h-12 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center overflow-hidden transition-all duration-700 group-hover:border-foreground group-hover:scale-110">
                 <motion.div
-                  animate={{ y: [0, 4, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <ArrowDown size={18} />
+                  <ArrowDown size={20} className="group-hover:opacity-0 transition-opacity" />
                 </motion.div>
-                <div className="absolute inset-0 bg-foreground scale-0 group-hover:scale-100 transition-transform duration-500 origin-center -z-10" />
-                <ArrowDown size={18} className="absolute text-background scale-0 group-hover:scale-100 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-foreground scale-0 group-hover:scale-100 transition-transform duration-700 origin-center -z-10" />
+                <ArrowDown size={20} className="absolute text-background scale-0 group-hover:scale-100 transition-transform duration-700" />
               </div>
             </motion.div>
           </Reveal>
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, scale: 1.05, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-1/2 right-0 -translate-y-1/2 w-full md:w-[65%] h-[50vh] md:h-[85vh] -z-0 opacity-20 md:opacity-100 pointer-events-none"
+          initial={{ opacity: 0, scale: 1.1, x: 100, rotate: 5 }}
+          animate={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 2.5, ease: [0.32, 0.72, 0, 1] }}
+          className="absolute top-1/2 right-[-5%] -translate-y-1/2 w-full md:w-[70%] h-[60vh] md:h-[90vh] -z-0 opacity-10 md:opacity-100 pointer-events-none"
         >
           <div className="relative w-full h-full">
             <Image
               src="/casestudy1.png"
               alt="Instagram Music Redesign Preview"
               fill
-              sizes="(max-width: 768px) 100vw, 65vw"
+              sizes="(max-width: 768px) 100vw, 70vw"
               className="object-contain object-right"
               priority
               unoptimized
@@ -85,22 +127,25 @@ export default function CaseStudyPage() {
       </section>
 
       {/* Overview Section */}
-      <section className="py-32 md:py-56 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          <div className="md:col-span-10 lg:col-span-8">
+      <section className="py-48 md:py-80 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
+          <div className="md:col-span-11 lg:col-span-9">
             <Reveal>
-              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-12">
-                Overview
+              <div className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 mb-12">
+                Contextual Narrative
+              </div>
+              <h2 className="text-4xl md:text-7xl font-medium tracking-[-0.03em] leading-[0.9] mb-16">
+                Redefining the Creator Lifecycle
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="text-2xl md:text-3xl text-foreground font-medium leading-tight mb-8">
-                For independent artists, the digital stage has become a place where they can make and share the music they love.
+              <p className="text-3xl md:text-5xl text-foreground font-medium leading-[1.1] mb-12 tracking-tight">
+                For independent artists, the digital stage has become a treadmill of constant production.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="text-lg md:text-xl text-zinc-500 leading-relaxed max-w-[65ch]">
-                With Instagram, the necessity for “content creation” forces musicians to trade their professional growth in exchange for fan engagement. Without professional resources, the obligation to produce endless short-form content burden artists, putting the music itself. This design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab and bridging the gap between Reels and creator profiles, we allow the music aspects to be integrated into the Instagram experience.
+              <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-[55ch]">
+                The relentless necessity for “content creation” forces musicians to trade their well-being for fleeting engagement. My design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab, we allow the music to take center stage—giving artists a healthier path to professional growth.
               </p>
             </Reveal>
           </div>
@@ -108,45 +153,45 @@ export default function CaseStudyPage() {
       </section>
 
       {/* User Research Section */}
-      <section className="py-32 md:py-48 px-6 md:px-12 lg:px-24 bg-zinc-50/50 dark:bg-zinc-900/10">
+      <section className="py-48 md:py-80 px-6 md:px-12 lg:px-24 bg-zinc-50/50 dark:bg-white/[0.01]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-32">
             <div className="md:col-span-4">
               <Reveal>
-                <div className="text-[11px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8">
+                <div className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 mb-12">
                   Phase 01
                 </div>
-                <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-8">
+                <h2 className="text-4xl md:text-7xl font-medium tracking-[-0.03em] leading-[0.9] mb-12">
                   User Research
                 </h2>
-                <p className="text-zinc-500 leading-relaxed">
-                  To understand the music ecosystem on Instagram, interviews were conducted with 2 independent artists.
+                <p className="text-xl text-zinc-500 leading-relaxed">
+                  To understand the music ecosystem on Instagram, interviews were conducted with two independent artists.
                 </p>
               </Reveal>
             </div>
-            <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-12">
               {[
                 {
-                  name: "The PhD Artist",
+                  name: "Myles — The PhD Artist",
                   insight: "Instagram acts as a quick showcase for vibe and credibility, but its layout is severely limited as a portfolio. I am dedicated to making music, not to social media creation.",
                   focus: "Portfolio vs. Platform",
                   context: "UC San Diego"
                 },
                 {
-                  name: "The Engineer Musician",
+                  name: "Drew — The Engineer Musician",
                   insight: "There is a social pressure that comes with Instagram. I prefer platforms with music-friendly features that act as a library where others can easily engage with my songs.",
                   focus: "Pressure vs. Discovery",
                   context: "Aerospace Engineer"
                 }
               ].map((user, i) => (
-                <Reveal key={i} delay={0.1 * i} y={20}>
-                  <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-shadow duration-500 flex flex-col h-full">
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-400">{user.focus}</div>
+                <Reveal key={i} delay={0.15 * i} y={40}>
+                  <div className="group relative p-10 rounded-[3rem] bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 flex flex-col h-full">
+                    <div className="flex justify-between items-start mb-10">
+                      <div className="px-3 py-1 rounded-full bg-zinc-50 dark:bg-zinc-800 text-[9px] font-mono uppercase tracking-widest text-zinc-400 border border-zinc-100 dark:border-zinc-700">{user.focus}</div>
                       <div className="text-[9px] font-mono uppercase text-zinc-300 dark:text-zinc-600 tracking-tighter">{user.context}</div>
                     </div>
-                    <h3 className="text-xl font-medium mb-4">{user.name}</h3>
-                    <p className="text-zinc-500 text-sm leading-relaxed italic mt-auto">
+                    <h3 className="text-3xl font-medium mb-8 group-hover:text-foreground transition-colors">{user.name}</h3>
+                    <p className="text-zinc-500 text-lg leading-relaxed italic mt-auto border-l-2 border-zinc-100 dark:border-zinc-800 pl-8 group-hover:border-foreground transition-all duration-1000">
                       &quot;{user.insight}&quot;
                     </p>
                   </div>
@@ -158,23 +203,23 @@ export default function CaseStudyPage() {
       </section>
 
       {/* User Feedback Section */}
-      <section className="py-32 md:py-48 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <section className="py-48 md:py-80 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           <div className="lg:col-span-5">
             <Reveal>
-              <div className="text-[11px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 mb-12">
                 Validation
               </div>
-              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-8">
+              <h2 className="text-4xl md:text-8xl font-medium tracking-[-0.03em] leading-[0.85] mb-12">
                 User Feedback
               </h2>
-              <p className="text-lg text-zinc-500 leading-relaxed mb-12">
+              <p className="text-2xl text-zinc-500 leading-relaxed mb-16 font-medium">
                 After seeing the prototype design, users highlighted how the centralized music hub directly addressed their primary pain points.
               </p>
             </Reveal>
           </div>
           <div className="lg:col-span-7">
-            <div className="space-y-6">
+            <div className="space-y-10">
               {[
                 {
                   title: "Meaningful Personalization",
@@ -192,19 +237,19 @@ export default function CaseStudyPage() {
                   tag: "Sustainability"
                 }
               ].map((feedback, i) => (
-                <Reveal key={i} delay={0.2 + (i * 0.1)} y={10}>
-                  <div className="group flex flex-col sm:flex-row gap-6 p-8 rounded-3xl hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors duration-500 border border-transparent hover:border-zinc-100 dark:hover:border-zinc-800">
+                <Reveal key={i} delay={0.2 + (i * 0.15)} y={30}>
+                  <div className="group flex flex-col sm:flex-row gap-10 p-12 rounded-[3rem] bg-zinc-50/50 dark:bg-white/[0.02] border border-zinc-100 dark:border-white/10 hover:bg-zinc-100 dark:hover:bg-white/[0.04] transition-all duration-700 ease-vanguard shadow-sm hover:shadow-xl">
                     <div className="shrink-0">
-                      <div className="w-12 h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center font-mono text-xs text-zinc-400 group-hover:bg-foreground group-hover:text-background transition-colors duration-500">
+                      <div className="w-16 h-16 rounded-[1.25rem] bg-white dark:bg-zinc-800 flex items-center justify-center font-mono text-sm text-zinc-400 group-hover:bg-foreground group-hover:text-background transition-all duration-1000 ease-vanguard shadow-sm">
                         0{i + 1}
                       </div>
                     </div>
                     <div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <h4 className="font-medium text-lg">{feedback.title}</h4>
-                        <span className="px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono uppercase text-zinc-500">{feedback.tag}</span>
+                      <div className="flex items-center gap-6 mb-4">
+                        <h4 className="font-medium text-2xl tracking-tight">{feedback.title}</h4>
+                        <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono uppercase text-zinc-500 tracking-[0.2em]">{feedback.tag}</span>
                       </div>
-                      <p className="text-zinc-500 text-sm leading-relaxed max-w-[55ch]">
+                      <p className="text-zinc-500 text-lg leading-relaxed max-w-[50ch]">
                         {feedback.text}
                       </p>
                     </div>
@@ -217,31 +262,31 @@ export default function CaseStudyPage() {
       </section>
 
       {/* Feature 1: Profile Music Tab */}
-      <section className="py-32 md:py-64 px-6 md:px-12 lg:px-24 bg-zinc-50 dark:bg-zinc-900/30">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <section className="py-48 md:py-80 px-6 md:px-12 lg:px-24 bg-zinc-50/50 dark:bg-white/[0.01]">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <div className="order-2 lg:order-1">
             <Reveal>
-              <div className="text-[11px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8">
+              <div className="text-[11px] font-mono uppercase tracking-[0.5em] text-zinc-400 mb-10">
                 Feature 01
               </div>
-              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-10">
+              <h2 className="text-4xl md:text-8xl font-medium tracking-[-0.03em] leading-[0.85] mb-12">
                 The Dedicated Music Tab
               </h2>
-              <p className="text-lg text-zinc-500 leading-relaxed mb-16 max-w-[50ch]">
-                A new home for audio creators. The Music Tab consolidates all original audio, licensed tracks, and saved sounds into a single, intuitive interface directly on the profile page.
+              <p className="text-2xl text-zinc-500 leading-relaxed mb-20 max-w-[45ch] font-medium">
+                A new home for audio creators. The Music Tab consolidates all original audio, licensed tracks, and saved sounds into a single interface.
               </p>
-              <div className="space-y-8">
+              <div className="space-y-10">
                 {[
-                  { icon: MusicNotes, text: "Centralized Audio" },
+                  { icon: MusicNotes, text: "Centralized Audio Repository" },
                   { icon: PlayCircle, text: "Instant Previewing" },
-                  { icon: SpeakerHigh, text: "Creator Attribution" }
+                  { icon: SpeakerHigh, text: "Direct Creator Attribution" }
                 ].map((item, i) => (
-                  <Reveal key={i} delay={0.1 + i * 0.1} y={10}>
-                    <div className="flex items-center gap-6 group cursor-default">
-                      <div className="w-12 h-12 rounded-2xl bg-white dark:bg-zinc-800 flex items-center justify-center shadow-sm border border-zinc-100 dark:border-zinc-700 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md group-hover:border-zinc-200">
-                        <item.icon size={22} weight="duotone" className="text-foreground" />
+                  <Reveal key={i} delay={0.25 + i * 0.15} y={20}>
+                    <div className="flex items-center gap-10 group cursor-default">
+                      <div className="w-16 h-16 rounded-[1.5rem] bg-white dark:bg-zinc-800 flex items-center justify-center shadow-sm border border-zinc-100 dark:border-zinc-700 transition-all duration-700 ease-vanguard group-hover:scale-110 group-hover:bg-foreground group-hover:text-background group-hover:shadow-2xl">
+                        <item.icon size={28} weight="duotone" />
                       </div>
-                      <span className="text-sm md:text-base font-medium text-zinc-600 dark:text-zinc-300 transition-colors group-hover:text-foreground">
+                      <span className="text-xl font-medium text-zinc-500 transition-all duration-700 group-hover:text-foreground group-hover:translate-x-2">
                         {item.text}
                       </span>
                     </div>
@@ -250,60 +295,33 @@ export default function CaseStudyPage() {
               </div>
             </Reveal>
           </div>
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end w-full">
-            <Reveal delay={0.3} y={40} className="w-full max-w-[420px]">
-              <div className="relative aspect-[9/19.5] rounded-[3.5rem] overflow-hidden bg-black shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] border-[12px] border-zinc-900 dark:border-zinc-800 p-2">
-                <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
-                  <Image
-                    src="/casestudy3.jpg"
-                    alt="Profile Music Tab Redesign"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 420px"
-                    className="object-contain"
-                    unoptimized
-                  />
-                </div>
-              </div>
-            </Reveal>
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <DoubleBezelMockup src="/casestudy3.jpg" alt="Profile Music Tab Redesign" delay={0.4} />
           </div>
         </div>
       </section>
 
       {/* Feature 2: Reels Integration */}
-      <section className="py-32 md:py-64 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <div className="flex justify-center lg:justify-start w-full">
-            <Reveal y={40} className="w-full max-w-[420px]">
-              <div className="relative aspect-[9/19.5] rounded-[3.5rem] overflow-hidden bg-black shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] border-[12px] border-zinc-900 dark:border-zinc-800 p-2">
-                <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
-                  <Image
-                    src="/casestudy2.png"
-                    alt="Reels Audio Integration"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 420px"
-                    className="object-contain"
-                    unoptimized
-                  />
-                </div>
-              </div>
-            </Reveal>
+      <section className="py-48 md:py-80 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+          <div className="flex justify-center lg:justify-start">
+            <DoubleBezelMockup src="/casestudy2.png" alt="Reels Audio Integration" />
           </div>
           <div>
             <Reveal delay={0.2}>
-              <div className="text-[11px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8">
+              <div className="text-[11px] font-mono uppercase tracking-[0.5em] text-zinc-400 mb-10">
                 Feature 02
               </div>
-              <h2 className="text-3xl md:text-5xl font-medium tracking-tighter mb-10">
+              <h2 className="text-4xl md:text-8xl font-medium tracking-[-0.03em] leading-[0.85] mb-12">
                 Seamless Reels Integration
               </h2>
-              <p className="text-lg text-zinc-500 leading-relaxed max-w-[50ch]">
-                Closing the loop between consumption and discovery. Reels now feature direct links that send users straight to the creator&apos;s music profile, maintaining user engagement and simplifying audio sourcing.
+              <p className="text-2xl text-zinc-500 leading-relaxed max-w-[45ch] font-medium">
+                Closing the loop between consumption and discovery. Reels now feature direct links that transport users straight to the creator&apos;s music profile.
               </p>
             </Reveal>
           </div>
         </div>
       </section>
-
     </main>
   );
 }
