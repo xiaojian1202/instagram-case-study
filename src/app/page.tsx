@@ -73,15 +73,10 @@ export default function CaseStudyPage() {
       <section className="relative min-h-[100dvh] flex flex-col justify-end pt-24 pb-32 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
         <div className="z-10 max-w-5xl">
           <Reveal y={80}>
-            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[0.85] mb-12">
+            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-medium tracking-tighter leading-[0.85] mb-20">
               Empowering Artists Through <br className="hidden md:block" />
               Centralized Audio Discovery
             </h1>
-          </Reveal>
-          <Reveal delay={0.15} y={30}>
-            <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-[45ch] mb-20">
-              A seamless ecosystem transforming passive listening into active creator engagement on a global platform.
-            </p>
           </Reveal>
           
           <Reveal delay={0.3} y={20}>
