@@ -132,12 +132,12 @@ export default function CaseStudyPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-2xl md:text-3xl text-foreground font-medium leading-tight mb-8">
-                For independent artists, the digital stage has become a treadmill of constant production.
+                For independent artists, the digital stage has become a place where they can make and share the music they love.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-lg md:text-xl text-zinc-500 leading-relaxed max-w-[65ch]">
-                The relentless necessity for “content creation” forces musicians to trade their well-being for fleeting engagement. Without professional resources, the obligation to produce endless short-form content subjects artists to unwelcome mental health pressures, often burying the music itself under the weight of the hustle. My design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab and bridging the gap between Reels and creator profiles, we allow the music to take center stage—giving artists a permanent home for their sonic brand and a healthier path to professional growth.
+                With Instagram, the necessity for “content creation” forces musicians to trade their professional growth in exchange for fan engagement. Without professional resources, the obligation to produce endless short-form content burden artists, putting the music itself. This design transforms this fragmented experience into a sustainable music ecosystem. By centralizing discovery through a dedicated Music Tab and bridging the gap between Reels and creator profiles, we allow the music aspects to be integrated into the Instagram experience.
               </p>
             </Reveal>
           </div>
@@ -157,20 +157,20 @@ export default function CaseStudyPage() {
                   User Research
                 </h2>
                 <p className="text-zinc-500 leading-relaxed">
-                  To understand the music ecosystem on Instagram, interviews were conducted with two independent artists.
+                  To understand the music ecosystem on Instagram, interviews were conducted with 2 independent artists.
                 </p>
               </Reveal>
             </div>
             <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-12">
               {[
                 {
-                  name: "Myles — The PhD Artist",
+                  name: "The PhD Artist",
                   insight: "Instagram acts as a quick showcase for vibe and credibility, but its layout is severely limited as a portfolio. I am dedicated to making music, not to social media creation.",
                   focus: "Portfolio vs. Platform",
                   context: "UC San Diego"
                 },
                 {
-                  name: "Drew — The Engineer Musician",
+                  name: "The Engineer Musician",
                   insight: "There is a social pressure that comes with Instagram. I prefer platforms with music-friendly features that act as a library where others can easily engage with my songs.",
                   focus: "Pressure vs. Discovery",
                   context: "Aerospace Engineer"
@@ -269,9 +269,9 @@ export default function CaseStudyPage() {
               </p>
               <div className="space-y-10">
                 {[
-                  { icon: MusicNotes, text: "Centralized Audio Repository" },
+                  { icon: MusicNotes, text: "Centralized Audio" },
                   { icon: PlayCircle, text: "Instant Previewing" },
-                  { icon: SpeakerHigh, text: "Direct Creator Attribution" }
+                  { icon: SpeakerHigh, text: "Creator Attribution" }
                 ].map((item, i) => (
                   <Reveal key={i} delay={0.25 + i * 0.15} y={20}>
                     <div className="flex items-center gap-10 group cursor-default">
@@ -308,7 +308,7 @@ export default function CaseStudyPage() {
                 Seamless Reels Integration
               </h2>
               <p className="text-lg text-zinc-500 leading-relaxed max-w-[45ch]">
-                Closing the loop between consumption and discovery. Reels now feature direct links that transport users straight to the creator&apos;s music profile, fostering deeper connections and simplifying audio sourcing.
+                Closing the loop between consumption and discovery. Reels now feature direct links that send users straight to the creator&apos;s music profile, maintaining user engagement and simplifying audio sourcing.
               </p>
             </Reveal>
           </div>
